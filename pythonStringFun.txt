@@ -1,0 +1,12 @@
+myString[:N]    Extract N number of characters from start of string.
+mystring[-N:]	Extract N number of characters from end of string
+mystring[X:Y]	Extract characters from middle of string, starting from X       position and ends with Y
+str.contains('pattern', case=False)	Check if pattern matches  (Pandas Function)
+str.find( )	Return position of sub-string or pattern
+str.isalnum()	Check whether string consists of only alphanumeric characters	
+str.islower()	Check whether characters are all lower case
+str.isupper()	Check whether characters are all upper case
+str.isnumeric()	Check whether string consists of only numeric characters
+str.isspace()	Check whether string consists of only whitespace characters
+mystring.split()[0] Find first word of string
+mystring.split(',')[0] Comma as separator for words
