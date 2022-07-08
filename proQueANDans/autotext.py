@@ -42,7 +42,7 @@ answer = []
 # ene array
 
 # open
-with open("I:\\PYthonProjects\\automatic a txt file\\text1.txt", "r") as sourceFile:
+with open("I:\\PYthonProjects\\automatic a txt file\\proQueANDans\\paper.txt", "r") as sourceFile:
     for line in sourceFile.readlines():
         getIntoLines.append(line)
 # end open
@@ -84,9 +84,12 @@ def optionSearcher(answer, anss, optionLetter, searchStarter, searchEnd):
         if anss[indexOFOpLet + 1] == ")":
             # we got answer
             allOptions = anss[indexOFOpLet:searchEnd]
-            print(allOptions)
-            splits = allOptions.split("  ", 1)
-            answer.append(splits[0])
+            if allOptions[0] != "d":
+                splits = allOptions.split("  ", 1)
+                answer.append(splits[0])
+            else:
+                answer.append(allOptions[0:(len(allOptions)-1)])
+
             break
         searchStarter = indexOFOpLet + 1
 
@@ -112,7 +115,7 @@ for anss in allAnswers:
 
 
 # saving
-with open("I:\\PYthonProjects\\automatic a txt file\\result.txt", "w") as resultfile:  # "w" will overwrite id
+with open("I:\\PYthonProjects\\automatic a txt file\\proQueANDans\\result.txt", "w") as resultfile:  # "w" will overwrite id
     for i in answer:
         resultfile.write(i)
         resultfile.write("\n")
