@@ -84,11 +84,14 @@ def optionSearcher(answer, anss, optionLetter, searchStarter, searchEnd):
         if anss[indexOFOpLet + 1] == ")":
             # we got answer
             nextOption = next_option(optionLetter)
+            optionSearchStater = searchStarter
             while True:
-                indexOfNOP = anss.find(nextOption, searchStarter, searchEnd)
+                indexOfNOP = anss.find(
+                    nextOption, optionSearchStater, searchEnd)
                 if anss[indexOfNOP + 1] == ")":
-                    answer.append(anss[searchStarter:indexOfNOP])
+                    answer.append(anss[optionSearchStater:indexOfNOP])
                     break
+                optionSearchStater = indexOfNOP + 1
 
             break
         searchStarter = indexOFOpLet + 1
@@ -116,7 +119,7 @@ for anss in allAnswers:
 
 # saving
 with open("I:\\PYthonProjects\\automatic a txt file\\result.txt", "w") as resultfile:  # "w" will overwrite id
-    for i in allAnswers:
+    for i in answer:
         resultfile.write(i)
         resultfile.write("\n")
 # end saving
