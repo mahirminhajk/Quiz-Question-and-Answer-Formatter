@@ -7,38 +7,16 @@ from tkinter import N
 from typing import Tuple
 import warnings as W
 
-# class
-
-
-class Question:
-    # __init__ is a constructor, self var is used to assecc other var in the class
-    def __init__(self, id, ques,  answer):
-        self.id = id
-        self.ques = ques
-        self.answer = answer
-# end class
-
-# function area
-
-
-def idCollector(line):  # please delete this
-    strId = ""
-    if line[:2] == " ":
-        strId = line[:1]
-    elif line[:2] != " ":
-        strId = line[:2]
-    else:
-        strId = line[:3]
-    return strId
-# end function area
-
+# main section
+totalQuestion = 16
+# END main section
 
 # array
 getIntoLines = []
-teResult = []
-questions = []
+questions = []  # all quesiton here
 allAnswers = []
-answer = []
+answer = []  # all correct answer here
+result = []  # the final result here
 # ene array
 
 # open
@@ -66,16 +44,7 @@ for line in getIntoLines:
 
 # answering
 
-
-def next_option(optionLetter):
-    if optionLetter == "a":
-        return "b"
-    elif optionLetter == "b":
-        return "c"
-    elif optionLetter == "c":
-        return "d"
-    elif optionLetter == "d":
-        return "d"
+   # parent function
 
 
 def optionSearcher(answer, anss, optionLetter, searchStarter, searchEnd):
@@ -83,15 +52,21 @@ def optionSearcher(answer, anss, optionLetter, searchStarter, searchEnd):
         indexOFOpLet = anss.find(optionLetter, searchStarter, searchEnd)
         if anss[indexOFOpLet + 1] == ")":
             # we got answer
-            allOptions = anss[indexOFOpLet:searchEnd]
-            if allOptions[0] != "d":
-                splits = allOptions.split("  ", 1)
-                answer.append(splits[0])
-            else:
-                answer.append(allOptions[0:(len(allOptions)-1)])
+            correct_option_picker(answer, anss, searchEnd, indexOFOpLet)
 
             break
         searchStarter = indexOFOpLet + 1
+
+    # child function
+
+
+def correct_option_picker(answer, anss, searchEnd, indexOFOpLet):
+    allOptions = anss[indexOFOpLet:searchEnd]
+    if allOptions[0] != "d":
+        splits = allOptions.split("  ", 1)
+        answer.append(splits[0])
+    else:
+        answer.append(allOptions[0:(len(allOptions)-1)])
 
 
 for anss in allAnswers:
@@ -111,12 +86,16 @@ for anss in allAnswers:
         W.warn("The option not find")
 
 
+for i in range(totalQuestion):
+    result.append(questions[i] + " " + answer[i])
+
+
 # end solving area
 
 
 # saving
 with open("I:\\PYthonProjects\\automatic a txt file\\proQueANDans\\result.txt", "w") as resultfile:  # "w" will overwrite id
-    for i in answer:
+    for i in result:
         resultfile.write(i)
         resultfile.write("\n")
 # end saving
