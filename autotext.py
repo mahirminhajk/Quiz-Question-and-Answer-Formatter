@@ -83,16 +83,10 @@ def optionSearcher(answer, anss, optionLetter, searchStarter, searchEnd):
         indexOFOpLet = anss.find(optionLetter, searchStarter, searchEnd)
         if anss[indexOFOpLet + 1] == ")":
             # we got answer
-            nextOption = next_option(optionLetter)
-            optionSearchStater = searchStarter
-            while True:
-                indexOfNOP = anss.find(
-                    nextOption, optionSearchStater, searchEnd)
-                if anss[indexOfNOP + 1] == ")":
-                    answer.append(anss[optionSearchStater:indexOfNOP])
-                    break
-                optionSearchStater = indexOfNOP + 1
-
+            allOptions = anss[indexOFOpLet:searchEnd]
+            print(allOptions)
+            splits = allOptions.split("  ", 1)
+            answer.append(splits[0])
             break
         searchStarter = indexOFOpLet + 1
 
