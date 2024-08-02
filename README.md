@@ -2,6 +2,21 @@
 
 This Python project processes a text file containing quiz questions and answers, and formats the output with the correct answers. The project reads questions and their corresponding answers from a file, processes them to extract the correct options, and saves the formatted results to a new file.
 
+## 📚 Project Overview
+
+During my first semester of college, I encountered a bulk of questions for my study. Each question was accompanied by multiple-choice options, but it was a challenge to identify and format the correct answers amidst the confusion. To streamline this process, I developed a Python script to automatically extract and format the correct answers from a list of questions and options.
+
+## 🎯 Objective
+
+The objective of this project was to:
+1. Parse a set of multiple-choice questions.
+2. Extract the correct answer for each question.
+3. Format the questions and correct answers into a clear, readable format.
+
+## 🛠️ How It Works
+
+The script takes a text file with multiple-choice questions and answers as input. It processes each line to separate questions and their corresponding answers. It then identifies the correct answer based on a designated option letter and formats the output.
+
 ## Features
 
 - Reads quiz questions and answers from a text file.
